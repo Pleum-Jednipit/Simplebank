@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Pleum-Jednipit/simplebank/db/sqlc/util"
+	"github.com/Pleum-Jednipit/simplebank/util"
 	"github.com/stretchr/testify/require"
 )
 
