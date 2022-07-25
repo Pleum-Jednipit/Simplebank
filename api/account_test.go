@@ -157,6 +157,7 @@ func TestGetAccountAPI(t *testing.T) {
 func TestCreateAccountAPI(t *testing.T) {
 	user, _ := randomUser(t)
 	account := randomAccount(user.Username)
+	fmt.Println(account)
 
 	testCases := []struct {
 		name          string
@@ -179,7 +180,6 @@ func TestCreateAccountAPI(t *testing.T) {
 					Currency: account.Currency,
 					Balance:  0,
 				}
-
 				store.EXPECT().
 					CreateAccount(gomock.Any(), gomock.Eq(arg)).
 					Times(1).
