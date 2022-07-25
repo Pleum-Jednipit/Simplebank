@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"errors"
 	"net/http"
 	"time"
 
@@ -99,9 +100,8 @@ func (server *Server) loginUser(ctx *gin.Context) {
 	}
 	err = util.CheckPassword(req.Password, user.HashedPassword)
 	if err != nil {
-		ctx.JSON(http.StatusUnauthorized, errorResponse(&CustomError{
-			message: "Invalid password",
-		}))
+		err = errors.New("Invalid password")
+		ctx.JSON(http.StatusUnauthorized, errorResponse(err))
 		return
 	}
 
